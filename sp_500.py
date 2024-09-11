@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import time
 
 # Título de la aplicación
-st.title('Robot de Trading para el índice S&P 500')
+#st.title('Robot de Trading para el índice S&P 500')
 
 # Sidebar para interacción con el usuario
 st.sidebar.title("Configuración")
@@ -81,7 +81,7 @@ def tomar_decision(precio_actual, tendencia, media_sp500):
     else:
         return 'Esperar'
 
-'''
+
 def visualizacion(datos, decision, media_sp500):
     datos['Promedio'] = media_sp500
     color_decision = {'Vender': 'green', 'Comprar': 'red', 'Esperar': 'brown'}[decision]
@@ -95,7 +95,8 @@ def visualizacion(datos, decision, media_sp500):
     plt.annotate(f'Decisión: {decision}', xy=(datos.index[-1], datos['Close'].iloc[-1]), fontsize=12, color=color_decision, weight='bold')
     plt.legend()
     plt.grid()
-    st.pyplot(plt)'''
+    st.pyplot(plt)
+'''
 def visualizacion(datos, decision, media_sp500, opcion):
     plt.figure(figsize=(16, 5))
 
@@ -117,7 +118,7 @@ def visualizacion(datos, decision, media_sp500, opcion):
 
     plt.legend()
     plt.grid()
-    st.pyplot(plt)
+    st.pyplot(plt)'''
 
 
 # Automatización al hacer clic en "Ejecutar análisis"
