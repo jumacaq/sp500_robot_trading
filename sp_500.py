@@ -43,8 +43,7 @@ fecha_fin = st.sidebar.date_input("Fecha de fin", pd.to_datetime("today"))
 # 5. Botón para ejecutar el análisis
 ejecutar = st.sidebar.button("Ejecutar análisis")
 
-# 6. Opción para seleccionar el gráfico a visualizar
-visualizacion_opcion = st.sidebar.radio("Selecciona el gráfico a visualizar", ["Precio de cierre", "Volumen", "Promedio móvil"])
+
 
 # Función para descargar y actualizar datos en tiempo real
 def datos_historicos(ticker, start_date, end_date):
@@ -87,7 +86,7 @@ def visualizacion(datos, decision, media_sp500):
     color_decision = {'Vender': 'green', 'Comprar': 'red', 'Esperar': 'brown'}[decision]
 
     plt.figure(figsize=(16, 5))
-    plt.title('GRAFICO PARA DECIDIR COMPRA-VENTA DE INDICE SP-500', fontsize=20, weight='bold')
+    plt.title(f'GRAFICO PARA DECIDIR COMPRA-VENTA DE {nombre_empresa}', fontsize=20, weight='bold')
     plt.xlabel('Fecha')
     plt.ylabel('Precio Actual en USD')
     plt.plot(datos.index, datos['Close'], label='Precio de Cierre', color='Blue')
@@ -96,29 +95,7 @@ def visualizacion(datos, decision, media_sp500):
     plt.legend()
     plt.grid()
     st.pyplot(plt)
-'''
-def visualizacion(datos, decision, media_sp500, opcion):
-    plt.figure(figsize=(16, 5))
 
-    if opcion == "Precio de cierre":
-        plt.title('Precio de Cierre del Índice S&P 500', fontsize=20, weight='bold')
-        plt.plot(datos.index, datos['Close'], label='Precio de Cierre', color='Blue')
-    elif opcion == "Volumen":
-        plt.title('Volumen de Transacciones del Índice S&P 500', fontsize=20, weight='bold')
-        plt.plot(datos.index, datos['Volume'], label='Volumen', color='Purple')
-    elif opcion == "Promedio móvil":
-        datos['Promedio'] = datos['Close'].rolling(window=20).mean()
-        plt.title('Precio de Cierre con Promedio Móvil (20 días)', fontsize=20, weight='bold')
-        plt.plot(datos.index, datos['Close'], label='Precio de Cierre', color='Blue')
-        plt.plot(datos.index, datos['Promedio'], label='Promedio Móvil (20 días)', color='Red', linestyle='dashdot')
-
-    # Anotar la decisión
-    color_decision = {'Vender': 'green', 'Comprar': 'red', 'Esperar': 'brown'}[decision]
-    plt.annotate(f'Decisión: {decision}', xy=(datos.index[-1], datos['Close'].iloc[-1]), fontsize=12, color=color_decision, weight='bold')
-
-    plt.legend()
-    plt.grid()
-    st.pyplot(plt)'''
 
 
 # Automatización al hacer clic en "Ejecutar análisis"
