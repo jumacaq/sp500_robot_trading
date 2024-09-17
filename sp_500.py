@@ -12,7 +12,7 @@ st.sidebar.title("Configuración")
 
 # Diccionario para convertir el ticker en el nombre de la empresa
 empresa_dict = {
-    "^SPY": "S&P 500",
+    "SPY": "S&P 500",
     "AAPL": "APPLE",
     "GOOGL": "GOOGLE",
     "TSLA": "TESLA",
